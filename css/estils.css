@@ -1,0 +1,134 @@
+/*
+h1 {
+    color: #000;
+    font-size: 5em;
+    text-align: center;
+}
+h2 {
+    color: #000;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+p {
+    color: #000;
+    font-size: 2em;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.fruites {
+    display: flex;
+    justify-content: space-around;
+}
+
+.imatges {
+    width: 100%;
+}
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* icono para borrar item */
+
+*{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #457115;
+}
+
+.fruites {
+    margin-bottom: 2rem;
+}
+
+.productos:hover {
+    scale: 1.2;
+}
+
+.producto-nombre {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+#compra{
+    margin-bottom: 100px;
+}
+
+.fa-circle-xmark {
+    color: rgb(176, 23, 23);
+    cursor: pointer;
+}
+
+/* icono para modificar item */
+
+.fa-pen-to-square {
+    color: rgb(102, 102, 221);
+    cursor: pointer;
+}
+
+.list-group {
+    border-radius: 10px;
+    width: 70%;
+    min-width: 400px;
+    font-size: .9rem;
+}
+
+.list-group-item {
+    font-size: 1rem;
+}
+
+/* Colores */
+/* Que cada 3 elementos se va a repetir esa secuencia de colores */
+
+.list-group-item:nth-child(3n + 1){
+    background-color: #b5e383b7;
+}
+
+.list-group-item:nth-child(3n + 2){
+    background-color: #b5e38366;
+}
+
+.list-group-item:nth-child(3n + 3){
+    background-color: #b5e38328;
+}
+
+#textoTotal {
+    font-size: 1.7rem;
+    font-weight: bold;
+    display: none;
+    justify-content:flex-end;
+    align-items: center;
+    margin-right: 2rem;
+    position: fixed;
+    top: 2rem;
+    right: 0;
+    border-radius: 10px;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 0 11px #84aa5d;
+}
+
+.fa-cart-shopping {
+    margin-left: 1.5rem;
+    color: #84aa5d;
+}
+
+.no-visible{
+    display: flex;
+}
+
+
