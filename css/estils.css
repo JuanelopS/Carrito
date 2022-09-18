@@ -1,39 +1,6 @@
-/*
-h1 {
-    color: #000;
-    font-size: 5em;
-    text-align: center;
-}
-h2 {
-    color: #000;
-    font-size: 2.5em;
-    text-align: center;
-}
-
-p {
-    color: #000;
-    font-size: 2em;
-    text-align: center;
-}
-
-.container {
-    margin: 0 auto;
-    width: 1000px;
-}
-
-.fruites {
-    display: flex;
-    justify-content: space-around;
-}
-
-.imatges {
-    width: 100%;
-}
-*/
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-/* icono para borrar item */
 
 *{ 
     margin: 0;
@@ -51,12 +18,18 @@ a{
     color: #457115;
 }
 
-.fruites {
-    margin-bottom: 2rem;
+a:hover {
+    color: #457115;
+    font-size: 1.1rem;
 }
 
+/* INDEX.PHP */
+
+
 .productos:hover {
-    scale: 1.2;
+    scale: 1.1;
+    border: 1px solid #457115;
+    border-radius: 15px;
 }
 
 .producto-nombre {
@@ -87,10 +60,6 @@ a{
     font-size: .9rem;
 }
 
-.list-group-item {
-    font-size: 1rem;
-}
-
 /* Colores */
 /* Que cada 3 elementos se va a repetir esa secuencia de colores */
 
@@ -114,21 +83,38 @@ a{
     align-items: center;
     margin-right: 2rem;
     position: fixed;
-    top: 2rem;
+    top: 4rem;
     right: 0;
     border-radius: 10px;
     background-color: white;
     padding: 1rem;
     box-shadow: 0 0 11px #84aa5d;
+    user-select: none;
+}
+
+#enviarDatos {
+    background: 0;
+    border: 0;
 }
 
 .fa-cart-shopping {
     margin-left: 1.5rem;
     color: #84aa5d;
+    cursor: pointer;
 }
 
 .no-visible{
     display: flex;
 }
+
+
+/* FORMULARIOS */
+
+.form-control:focus {
+    border-color: #457115;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #457115;
+  }
+
+
 
 

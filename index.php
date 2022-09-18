@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once './php/connect.php';
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,23 +15,39 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/1e7e74a174.js" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/1e7e74a174.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/estils.css">
 </head>
 
 <body>
+    <header class="mb-5">
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra</span>
+        <span class="text-right">
+
+            <!-- Indicación en el header del usuario actualmente logueado y opción de logout -->
+            <?php
+            // echo session_id();
+            if(isset($_SESSION["user"])){
+                echo "Bienvenido " . $_SESSION["user"] . " <small><a href='./php/logout.php'>Cerrar sesión</a></small>";
+            } else{
+                echo "<a href='./php/entrar.php'>Entrar</a> / <a href='./php/registro.php'>Crear usuario</a>";
+            }
+            ?>
+
+        </span>
+        </div>
+    </nav>
+    </header>
     <div class="container">
-
-        <header class="text-center">
-            <h1>Carrito de la compra</h1>
-
+        <section class="text-center mb-5">
             <div id="presentacio">
                 <h2>Aplicación para comprar fruta</h2>
                 <p>Elige la fruta que deseas haciendo click sobre su imagen.</p>
             </div>
-        </header>
-        <section id="productos">
+        </section>
+        <section id="productos mb-5">
             <div class="row fruites text-center">
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
                     <a href="#compra" nombre="Manzana Royal Gala" precio="2.50" unidad="kilo">
@@ -118,9 +139,12 @@
                 </div>
             </div>
         </section>
-        <section id="compra">
+
+        <br><br>  <!-- CHAPUZA TEMPORAL -->
+
+        <section id="compra mt-5">
             <div>
-                <div style="border-bottom: 4px solid red">
+                <div style="border-bottom: 4px solid green">
                     <h2>Su compra:</h2>
                 </div>
                 <p id="barra"></p>
@@ -129,7 +153,5 @@
         </section>
     </div>
 
-    <script src="js/carrito.js"></script>
-</body>
-
+    <script src="./js/carrito.js" type="module"></script>
 </html>

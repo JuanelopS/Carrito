@@ -19,7 +19,13 @@ window.onload = () => {
 
   const productos = document.querySelectorAll('.productos');
   const compra = document.querySelector('#carrito');
+  
   compra.insertAdjacentHTML('afterend', `<p id="textoTotal">Total:</p>`);
+  const textoTotal = document.querySelector('#textoTotal');
+  textoTotal.innerHTML = `
+    Total: 0.00€
+    <button type="submit" id="enviarDatos"><i class="fa-solid fa-cart-shopping"></i></button>
+  `;
 
   /* Array de la lista de frutas en el carrito del cliente */
   
@@ -176,16 +182,46 @@ window.onload = () => {
   const actualizarTotal = () => {
 
     const total = listaCompra.reduce((itemAnterior, item) => itemAnterior + (item.precio * item.cantidad), 0);
+    
     const textoTotal = document.querySelector('#textoTotal');
     // mostrar banner con la cantidad total a pagar
     textoTotal.style.display = 'flex';
-    textoTotal.innerHTML = `Total: ${total.toFixed(2)}€ <a href="./php/compra.php" title="Finalizar compra"><i class="fa-solid fa-cart-shopping" id="submitCompra"></a></i>`;
+
+    textoTotal.innerHTML = `
+      Total: ${total.toFixed(2)}€
+        <button id="enviarDatos"">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+    `;
 
     // si no hay nada en el carrito que no se muestre el banner del total a pagar
     if(listaCompra.length == 0){
       const textoTotal = document.querySelector('#textoTotal');
       textoTotal.style.display = 'none';
     }
+
+
+    // envio de datos a PHP (evento click del carrito con precio total de la compra)
+
+    const submitCompra = document.querySelector('#enviarDatos');
+
+    submitCompra.addEventListener('click', () => {
+
+      const url = '../php/datos.php';
+
+      fetch(url, {
+          method: 'post',
+          body: JSON.stringify({ ...listaCompra }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+        .then( response => response.text())
+        .then( text => console.log(text))
+        .catch( error => console.error(error));
+
+    });
+
   }
 
 
@@ -213,5 +249,13 @@ window.onload = () => {
   }
 
 }
+
+ 
+
+
+
+
+
+
 
 
