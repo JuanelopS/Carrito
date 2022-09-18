@@ -6,11 +6,13 @@ Estoy totalmente abierto a comentarios para mejorarlo 💕
 
 Pendiente:
 
-- Backend PHP: login, compra...
+- Backend PHP: array de objetos listaCompra;
 
-- Base de Datos (seguramente MySql)
+- Relacionar base de datos (compras con usuarios, etc...)
 
 - Formulario de contacto
+
+- Mejorar el como se muestran los items (da grima)
 
 - Modo día/noche
 
