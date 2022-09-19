@@ -1,40 +1,65 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+@font-face {
+    font-family: Madrigal;
+    src: url(../font/Madrigal.ttf);
+  }
+
+:root{
+    --main-color: #3f8a4b;
+}
 
 *{ 
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    
 }
 
 body{
     font-family: 'Roboto', sans-serif;
+    background-color: white;
+    background-image:  radial-gradient(var(--main-color) .2px, transparent 1.05px), radial-gradient(var(--main-color) .2px, white 1.05px);
+    background-size: 42px 42px;
+    background-position: 0 0,21px 21px;
 }
 
 a{
     text-decoration: none;
     font-weight: bold;
-    color: #457115;
+    color: var(--main-color);
 }
 
 a:hover {
-    color: #457115;
+    color: var(--main-color);
     font-size: 1.1rem;
 }
 
 /* INDEX.PHP */
 
-
-.productos:hover {
-    scale: 1.1;
-    border: 1px solid #457115;
-    border-radius: 15px;
+header {
+    border-bottom: 1px solid var(--main-color);
+    box-shadow: 0 0 12px var(--main-color);
 }
 
-.producto-nombre {
-    font-size: 1.3rem;
-    letter-spacing: 2px;
+#logo {
+    font-family: Madrigal, sans-serif;
+    font-size: 6rem;
+}
+
+.productos{
+    margin-bottom: 1rem;
+}
+
+.productos:hover {
+    scale: 1.05;
+    z-index:99;
+    border: 1px solid var(--main-color);
+    border-radius: 15px;
+    box-shadow: 0 0 12px var(--main-color);
+    font-size: 1.2rem;
 }
 
 #compra{
@@ -88,7 +113,7 @@ a:hover {
     border-radius: 10px;
     background-color: white;
     padding: 1rem;
-    box-shadow: 0 0 11px #84aa5d;
+    box-shadow: 0 0 11px var(--main-color);
     user-select: none;
 }
 
@@ -111,9 +136,28 @@ a:hover {
 /* FORMULARIOS */
 
 .form-control:focus {
-    border-color: #457115;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #457115;
+    border-color: var(--main-color);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--main-color);
   }
+
+
+/* FOOTER */
+
+footer {
+    color: var(--main-color);
+    border-top: 1px solid var(--main-color);
+    box-shadow: 0 0 12px var(--main-color);
+}
+
+footer a {
+    color: var(--main-color);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+footer a:hover{
+    color: var(--main-color);
+}
 
 
 

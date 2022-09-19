@@ -1,19 +1,3 @@
-/*
-Hay que programar un carrito de compra de fruta.
-
-Hay que programar la compra con el carrito:
-
-1) SIN TOCAR EL HTML
-
-2) Usando addEventListener
-
-En la parte inferior debe aparecer la lista de la compra
-con un icono que permita eliminar ese elemento de la lista.
-El total se debe recalcular.
-
-Igual que la sección con las frutas es responsive, la lista también debe serlo
-
-*/
 
 window.onload = () => {
 
@@ -42,13 +26,8 @@ window.onload = () => {
       let nombre = fruta.childNodes[1].getAttribute('nombre');
       let precio = Number(fruta.childNodes[1].getAttribute('precio'));
       let unidad = fruta.childNodes[1].getAttribute('unidad');
-      let cantidad
-      // forzar nº para la cantidad de fruta como respuesta al prompt
-      do {
-        cantidad = Number(prompt(`¿Qué cantidad de ${nombre} desea?`,`1`));
-      } while (isNaN(cantidad) || cantidad === 0);
 
-      agregarFruta(nombre, precio, unidad, cantidad);
+      agregarFruta(nombre, precio, unidad);
     });
   })
 
@@ -59,7 +38,7 @@ window.onload = () => {
      Hago uso de ids aleatorios para evitar problemas al insertar(prompt) o borrar items obtener valores repetidos
   */
 
-  const agregarFruta = (nombre, precio, unidad, cantidad) => {
+  const agregarFruta = (nombre, precio, unidad) => {
     
     let id1 = self.crypto.randomUUID(); // id para borrar
     let id2 = self.crypto.randomUUID(); // id para modificar
@@ -71,7 +50,7 @@ window.onload = () => {
       nombre: nombre, 
       precio: precio, 
       unidad: (unidad == 'unidad') ? 'u' : 'kilo',
-      cantidad: cantidad
+      cantidad: 1
     };
 
     /* Si ya existe la fruta en el carro, que no añada una nueva linea, 
@@ -79,12 +58,23 @@ window.onload = () => {
 
     const existeFruta = listaCompra.some( fruta => (fruta.nombre === nombre) );
 
+    // No existe la fruta, preguntar por primera vez
     if(!existeFruta){
+      // forzar nº para la cantidad de fruta como respuesta al prompt
+      do {
+        item.cantidad = Number(prompt(`¿Qué cantidad de ${nombre} desea?`,`${item.cantidad}`));
+      } while (isNaN(item.cantidad) || item.cantidad === 0);
       listaCompra = [...listaCompra, item];
+
+    // Existe la fruta, preguntar si desea modificar su cantidad, modificando
     } else {
       listaCompra.forEach( fruta => {
         if(fruta.nombre === nombre){
-          fruta.cantidad += cantidad;
+          let cantidad;
+          do {
+            cantidad = Number(prompt(`¿Desea cambiar la cantidad de ${nombre}?`,`${fruta.cantidad}`));
+          } while (isNaN(cantidad) || cantidad === 0);
+          fruta.cantidad = cantidad;
         }
       });
     }
@@ -190,7 +180,12 @@ window.onload = () => {
     textoTotal.innerHTML = `
       Total: ${total.toFixed(2)}€
         <button id="enviarDatos"">
-          <i class="fa-solid fa-cart-shopping"></i>
+        <lord-icon
+            src="https://cdn.lordicon.com/cllunfud.json"
+            trigger="hover"
+            colors="outline:#109121,primary:#0a5c15,secondary:#d1fad7"
+            style="width:60px;height:60px">
+        </lord-icon>
         </button>
     `;
 

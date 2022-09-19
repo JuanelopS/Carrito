@@ -20,30 +20,30 @@ include_once './php/connect.php';
 </head>
 
 <body>
-    <header class="mb-5">
-    <nav class="navbar bg-light">
-        <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra</span>
-        <span class="text-right">
+    <header>
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra</span>
+            <span class="text-right">
 
-            <!-- Indicación en el header del usuario actualmente logueado y opción de logout -->
-            <?php
-            // echo session_id();
-            if(isset($_SESSION["user"])){
-                echo "Bienvenido " . $_SESSION["user"] . " <small><a href='./php/logout.php'>Cerrar sesión</a></small>";
-            } else{
-                echo "<a href='./php/entrar.php'>Entrar</a> / <a href='./php/registro.php'>Crear usuario</a>";
-            }
-            ?>
+                <!-- Indicación en el header del usuario actualmente logueado y opción de logout -->
+                <?php
+                // echo session_id();
+                if(isset($_SESSION["user"])){
+                    echo "Bienvenido " . $_SESSION["user"] . " <small><a href='./php/logout.php'>Cerrar sesión</a></small>";
+                } else{
+                    echo "<a href='./php/entrar.php'>Entrar</a> / <a href='./php/registro.php'>Crear usuario</a>";
+                }
+                ?>
 
-        </span>
-        </div>
-    </nav>
+            </span>
+            </div>
+        </nav>
     </header>
     <div class="container">
         <section class="text-center mb-5">
             <div id="presentacio">
-                <h2>Aplicación para comprar fruta</h2>
+                <h2 id="logo"><span id="logo-texto">MercaFruta</span><lord-icon src="https://cdn.lordicon.com/waqyacxh.json" trigger="hover"style="width:250px;height:250px"></lord-icon></h2>
                 <p>Elige la fruta que deseas haciendo click sobre su imagen.</p>
             </div>
         </section>
@@ -142,7 +142,7 @@ include_once './php/connect.php';
 
         <br><br>  <!-- CHAPUZA TEMPORAL -->
 
-        <section id="compra mt-5">
+        <section id="compra mb-5">
             <div>
                 <div style="border-bottom: 4px solid green">
                     <h2>Su compra:</h2>
@@ -152,6 +152,45 @@ include_once './php/connect.php';
             </div>
         </section>
     </div>
+    <footer class="bg-light text-center text-lg-start mt-5">
+    <div class="container p-4 pb-0">
+        <form action="" onsubmit="return false">
+        <div class="row justify-content-center">
+            <div class="col-auto mb-4 mb-md-0">
+            <p class="pt-2">
+                <strong>¿Quieres recibir las últimas novedades en tu correo electrónico?</strong>
+            </p>
+            </div>
+
+            <div class="col-md-5 col-12 mb-4 mb-md-0">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="form5Example25" class="form-control" placeholder="En desarrollo..."/>
+            </div>
+            </div>
+
+            <div class="col-auto mb-4 mb-md-0">
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-success mb-4">
+                Subscríbete
+            </button>
+            </div>
+
+        </div>
+
+        </form>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center p-3"> 
+        © 2022
+        <a href=" #">MercaFruta</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
 
     <script src="./js/carrito.js" type="module"></script>
+    <!-- lordicon.com (icon logo) -->
+    <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
+</body>
 </html>

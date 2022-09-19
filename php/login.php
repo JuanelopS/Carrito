@@ -18,7 +18,7 @@
       // login ok -> asignamos la variable de sesión y redirección hacia welcome.php
       $_SESSION["user"] = $name;
       $_SESSION["login_error"] = 3;
-      if($name == "admin"){
+      if($name === "admin"){
         header("location: admin.php");
       } else{
         header("location: welcome.php?user_name=$name");
@@ -32,7 +32,7 @@
       } 
       else $_SESSION["login_error"]--;
       if($_SESSION["login_error"] > 0){
-        header("location: ../index.php?error=1");
+        header("location: ./entrar.php?error=1");
       }
       else{
         $_SESSION["login_error"] = 3;
