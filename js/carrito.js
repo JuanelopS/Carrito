@@ -15,6 +15,15 @@ window.onload = () => {
   
   let listaCompra = [];
 
+  /* localStorage para no perder el carrito en caso de refrescar / salir de la página */
+
+  if (localStorage.getItem('listaCompra') != null){
+    listaCompra = JSON.parse(localStorage.getItem('listaCompra'));
+  }
+  let listaCompraJson = JSON.stringify(listaCompra);
+  localStorage.setItem('listaCompra', listaCompraJson);
+  mostrarCarrito();
+  actualizarTotal();
 
   /* MAPEO DEL DOM: 
      Asignación de un evento click a cada fruta y llamada a la función agregarFruta() 
@@ -58,7 +67,7 @@ window.onload = () => {
 
     const existeFruta = listaCompra.some( fruta => (fruta.nombre === nombre) );
 
-    // No existe la fruta, preguntar por primera vez
+    // No existe la fruta -> preguntar por primera vez
     if(!existeFruta){
       // forzar nº para la cantidad de fruta como respuesta al prompt
       do {
@@ -66,22 +75,21 @@ window.onload = () => {
       } while (isNaN(item.cantidad) || item.cantidad === 0);
       listaCompra = [...listaCompra, item];
 
-    // Existe la fruta, preguntar si desea modificar su cantidad, modificando
+    // Existe la fruta -> preguntar si desea modificar su cantidad
     } else {
       listaCompra.forEach( fruta => {
         if(fruta.nombre === nombre){
-          let cantidad;
           do {
-            cantidad = Number(prompt(`¿Desea cambiar la cantidad de ${nombre}?`,`${fruta.cantidad}`));
-          } while (isNaN(cantidad) || cantidad === 0);
-          fruta.cantidad = cantidad;
+            item.cantidad = Number(prompt(`¿Desea cambiar la cantidad de ${nombre}?`,`${fruta.cantidad}`));
+          } while (isNaN(item.cantidad) || item.cantidad === 0);
+          fruta.cantidad = item.cantidad;
         }
       });
     }
 
     actualizarTotal();
     mostrarCarrito();
-
+    
   }
 
 
@@ -92,8 +100,8 @@ window.onload = () => {
      listaCompra.map(({ id, nombre, precio, unidad, cantidad }) -> Hago uso de la 'desestructuración' de JS 
      para no tener que llamar a las propiedades del objeto como fruta.id, fruta.precio, fruta.cantidad...
   */
-
-  const mostrarCarrito = () => {
+   
+  function mostrarCarrito () {
     
     compra.innerHTML = "";
 
@@ -118,10 +126,13 @@ window.onload = () => {
     }else {
       compra.firstChild.insertAdjacentHTML('beforebegin', `Aún no ha comprado nada`);
     }
-  
+    
+    listaCompraJson = JSON.stringify(listaCompra);
+    localStorage.setItem("listaCompra", listaCompraJson);
+
     /* Html lista de la compra: desestructuración objetos del array listaCompra */
 
-    listaCompra.map(({ id1, id2, nombre, precio, unidad, cantidad }) => {  
+    JSON.parse(listaCompraJson).map(({ id1, id2, nombre, precio, unidad, cantidad }) => {  
       compra.firstChild.insertAdjacentHTML('beforeend', 
         `<li class="list-group-item">
           <div class="row">
@@ -145,8 +156,14 @@ window.onload = () => {
       const seleccionModificar = document.getElementById(`${id2}`);
       seleccionModificar.addEventListener('click',() => actualizarFruta(id2, nombre, cantidad));
       
+      // si no hay nada en el carrito que no se muestre el banner del total a pagar
+      if(listaCompra.length == 0){
+        const textoTotal = document.querySelector('#textoTotal');
+        textoTotal.style.display = 'none';
+      }
+
     });
-    
+
   }
 
 
@@ -157,7 +174,7 @@ window.onload = () => {
 
   const quitarFruta = id => {
 
-      listaCompra = listaCompra.filter(item => item.id1 != id);
+      listaCompra = listaCompra.filter(item => item.id1 != id); 
       mostrarCarrito();
       actualizarTotal();
 
@@ -169,7 +186,7 @@ window.onload = () => {
      precio * cantidad de todos los elementos
   */
 
-  const actualizarTotal = () => {
+  function actualizarTotal () {
 
     const total = listaCompra.reduce((itemAnterior, item) => itemAnterior + (item.precio * item.cantidad), 0);
     
@@ -195,28 +212,17 @@ window.onload = () => {
       textoTotal.style.display = 'none';
     }
 
-
-    // envio de datos a PHP (evento click del carrito con precio total de la compra)
+    /* envio de datos a PHP (evento click del carrito con precio total de la compra) 
+       localStorage de listaCompra (array de objetos -> json string = JSON.stringify) */
 
     const submitCompra = document.querySelector('#enviarDatos');
 
     submitCompra.addEventListener('click', () => {
 
-      const url = '../php/datos.php';
-
-      fetch(url, {
-          method: 'post',
-          body: JSON.stringify({ ...listaCompra }),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-      })
-        .then( response => response.text())
-        .then( text => console.log(text))
-        .catch( error => console.error(error));
-
+      localStorage.setItem("listaCompra", listaCompraJson);
+      window.location.href = '../php/carrito.php';
+      
     });
-
   }
 
 

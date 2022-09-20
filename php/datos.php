@@ -1,3 +1,5 @@
+<!-- Tratamiento de los datos del carrito -->
+
 <?php
 
 $datos = file_get_contents("php://input");

@@ -15,7 +15,6 @@
     padding: 0;
     box-sizing: border-box;
     user-select: none;
-    
 }
 
 body{
@@ -34,7 +33,6 @@ a{
 
 a:hover {
     color: var(--main-color);
-    font-size: 1.1rem;
 }
 
 /* INDEX.PHP */
@@ -44,9 +42,13 @@ header {
     box-shadow: 0 0 12px var(--main-color);
 }
 
+.fa-seedling {
+    color: var(--main-color);
+}
+
 #logo {
     font-family: Madrigal, sans-serif;
-    font-size: 6rem;
+    font-size: 10vw;
 }
 
 .productos{
@@ -54,12 +56,11 @@ header {
 }
 
 .productos:hover {
-    scale: 1.05;
-    z-index:99;
     border: 1px solid var(--main-color);
     border-radius: 15px;
     box-shadow: 0 0 12px var(--main-color);
     font-size: 1.2rem;
+    background-color: white;
 }
 
 #compra{
@@ -138,7 +139,7 @@ header {
 .form-control:focus {
     border-color: var(--main-color);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px var(--main-color);
-  }
+}
 
 
 /* FOOTER */

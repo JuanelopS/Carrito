@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name.value = '';
       return;
     }
-    // !!surname -> en login.php surname es null (no existe el input)
+    // !!surname -> en login.php el campo apellido no existe
     if(!!surname && surname.value.length <= 3){
       event.preventDefault();
       let surnameHelp = document.querySelector("#nameHelp");
