@@ -83,7 +83,7 @@ header {
     border-radius: 10px;
     width: 70%;
     min-width: 400px;
-    font-size: .9rem;
+    font-size: 1rem;
 }
 
 /* Colores */
@@ -148,6 +148,7 @@ footer {
     color: var(--main-color);
     border-top: 1px solid var(--main-color);
     box-shadow: 0 0 12px var(--main-color);
+
 }
 
 footer a {

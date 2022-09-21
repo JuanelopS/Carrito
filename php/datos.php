@@ -1,14 +1,34 @@
-<!-- Tratamiento de los datos del carrito -->
 
 <?php
+  // Recogida de los datos del carrito por PHP 
+  session_start();
 
-$datos = file_get_contents("php://input");
-$json = json_decode($datos, true);
+  include_once './connect.php';
 
-print_r($json);
+  $datos = file_get_contents("php://input");
+  $total = json_decode($datos, true);
 
-  foreach ($json as $key => $value) {
-    print_r ($value['nombre'] . " - " . $value['cantidad'] . " - " . $value['precio'] . "\n");
+  // print_r($total);
+  // print_r($_SESSION['user']);
+  
+  /* Inserción de compra en la base de datos */
+
+  $sql_insert = "INSERT INTO compra(id_compra, usuario_compra, total_compra, fecha_compra) VALUES (default, ?, ?, default)";
+
+  try {
+      $add_compra = $pdoConnection->prepare($sql_insert);
+      $add_compra->execute(array($_SESSION["user"], $total));
+  } catch (Exception $err){
+    print "Error!: " . $err->getMessage() . "<br>";
+    die();
   }
+
+
+  // cerrando conexión con la db
+  $add_compra = null;
+  $pdoConnection = null;
+
+  // tras la compra volver a index.php
+  // header("Location: ../index.php");
 
 ?>

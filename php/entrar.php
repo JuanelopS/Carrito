@@ -54,7 +54,7 @@ try {
         </div>
       </nav>
     </header>
-
+              
     <div class="container col-11 col-lg-4">
       <!-- importante vh-100 para centrar verticalmente -->
       <div class="row vh-100 justify-content-center align-items-center">
@@ -106,7 +106,7 @@ try {
       <!-- Copyright -->
       <div class="text-center p-3"> 
           © 2022
-          <a href=" #">Carrito</a>
+          <a href="#">Carrito</a>
       </div>
       <!-- Copyright -->
     </footer>

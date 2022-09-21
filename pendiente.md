@@ -1,12 +1,12 @@
 # Pendiente 🤔
 
-- LocalStorage (previo al envio a la base de datos) (o cookies ?) COMPLETADA!
+- LocalStorage (previo al envio a la base de datos) (o cookies ?) ---------------- COMPLETADO!
 - Contenido carrito a la derecha fixed ( offcanvas body scrolling bootstrap? )
 - Relacionar bases de datos (usuarios y sus compras)
 - Modo claro/oscuro
 - Mejorar grid de items (posición, tipografía, etc...)
 - Mejorar header/footer
-- Completar envío de carro a MySQL
+- Completar envío de carro a MySQL ----------------------------------------------- COMPLETADO 50%
 - Mobile First 100%
 - Formulario de contacto
 - Habilitar formulario de lista de correo

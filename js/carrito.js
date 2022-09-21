@@ -196,7 +196,7 @@ window.onload = () => {
 
     textoTotal.innerHTML = `
       Total: ${total.toFixed(2)}€
-        <button id="enviarDatos"">
+        <button id="enviarDatos">
         <lord-icon
             src="https://cdn.lordicon.com/cllunfud.json"
             trigger="hover"
