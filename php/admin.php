@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-<header>
+<header class="mb-5">
     <nav class="navbar bg-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra - Panel de administración</span>
@@ -41,7 +41,7 @@
       </div>
     </nav>
   </header>
-  <div class="container">
+  <div class="container col-8">
     <?php 
     // si el usuario es el admin, se muestra la tabla de usuarios
     if(isset($_SESSION["user"]) && $_SESSION["user"] == "admin"){
@@ -58,15 +58,22 @@
         </thead>
         <tbody>";
         // listado de todos los usuarios
+        // los botones son enlaces mediante los cuales llamaré a una función php (info, editar, borrar) pasándole como parámetro GET el id del usuario
+
         foreach ($result_list as $key => $value) {
           echo
           "
-            <tr>
+            <tr class='align-middle'>
               <th scope='row'>" . $value['user_id'] . "</th>
               <td>" . $value['user_name'] . "</td>
               <td>" . $value['user_surname'] . "</td>
               <td>" . $value['user_email'] . "</td>
               <td>" . $value['user_pass'] . "</td>
+              <td class='text-end'>
+                <a id='btn-info' class='btn btn-info btn-sm disabled'>Info</a>
+                <a href='editarUsuario.php?user_id=" . $value['user_id'] . "' id='btn-edit' class='btn btn-success btn-sm'>Editar</a>
+                <a href='borrarUsuario.php?user_id=" . $value['user_id'] . "' id='btn-delete' class='btn btn-danger btn-sm'>Borrar</a>
+              </td>
             </tr>
           ";
         }

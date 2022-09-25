@@ -30,7 +30,7 @@
 
       try {
         $add_user = $pdoConnection->prepare($sql_insert);
-        $add_user->execute(array($name, $surname, $email, $password));
+        $add_user->execute(array());
 
       } catch (Exception $err){
         print "Error!: " . $err->getMessage() . "<br>";
@@ -150,8 +150,5 @@
 
   <script src="../js/validacion_formulario.js"></script>  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    console.log(window.location.pathname)
-  </script>
 </body>
 </html>
