@@ -2,7 +2,6 @@
 
   include_once './connect.php';
 
-  $isRepeated = 0;
   if ($_POST){
 
     $name = $_POST['user_name'];
@@ -10,40 +9,38 @@
     $email = $_POST['user_email'];
     $password = $_POST['user_pass'];
     
-    // comprobar que no se repitan usuarios en la base de datos desde php
-    $sql_verify_query = "SELECT * FROM users WHERE user_name='$name'";
-    $sql_verify = $pdoConnection->prepare($sql_verify_query);
-    $sql_verify->execute();
-    // PDO::FETCH_ASSOC devuelve solamente el valor de la columna
-    $result_verify = $sql_verify->fetch(PDO::FETCH_ASSOC);
+    $sql_verify = "SELECT * FROM users WHERE user_email = '$email'";
 
-    // ya existe un usuario en la bd
-    if($result_verify > 0){
-      // print_r($result_verify['user_name']);
-      $isRepeated = 1;
-    }
-    
-    // usuario no repetido en la bd....
-    else 
-    {
+    try{
+
+      $verify_user = $pdoConnection->prepare($sql_verify);
+      $verify_user->execute(array());
+
+    if($verify_user->rowCount() > 0){ 
+      $isRepeated = true; 
+
+    } else{
+
+      $isRepeated = false;
       $sql_insert = "INSERT INTO users(user_name, user_surname, user_email, user_pass) VALUES (?,?,?,?)";
 
-      try {
-        $add_user = $pdoConnection->prepare($sql_insert);
-        $add_user->execute(array());
-
-      } catch (Exception $err){
-        print "Error!: " . $err->getMessage() . "<br>";
-        die();
-      }
-
-      // cerrando conexión con la db
-      $add_user = null;
-      $pdoConnection = null;
+      $add_user = $pdoConnection->prepare($sql_insert);
+      $add_user->execute(array($name, $surname, $email, $password));
 
       // para que se recargue la página
       header("location: ../index.php");
     }
+
+    } catch (Exception $err){
+      print "Error!: " . $err->getMessage() . "<br>";
+      die();
+    }
+
+    // cerrando conexión con la db
+    $add_user = null;
+    $pdoConnection = null;
+
+    
   }
  
 ?>
@@ -86,9 +83,9 @@
 
         <!-- aviso de error en registro de usuario ya existente -->
         <?php
-          if($isRepeated != 0){
+          if(isset($isRepeated) && $isRepeated == true){
             echo " <div class='alert alert-danger' role='alert'>
-                  El usuario ". $result_verify['user_name'] . " ya existe!
+                  El email ". $email . " ya existe!
               </div>";
           }
         ?>

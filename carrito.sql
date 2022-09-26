@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 18-09-2022 a les 23:47:17
+-- Temps de generació: 26-09-2022 a les 16:03:02
 -- Versió del servidor: 10.4.24-MariaDB
 -- Versió de PHP: 8.1.6
 
@@ -42,8 +42,8 @@ CREATE TABLE `cesta` (
 
 CREATE TABLE `compra` (
   `id_compra` int(11) NOT NULL,
-  `usuario_compra` int(11) NOT NULL,
-  `total_compra` int(11) NOT NULL,
+  `usuario_compra` varchar(50) NOT NULL,
+  `total_compra` float(10,2) NOT NULL,
   `fecha_compra` date NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

@@ -74,7 +74,7 @@ try {
 
           <div class="mb-1">
             <label for="user_name" class="form-label"><i class="fa-solid fa-user"></i> Usuario</label>
-            <input type="text" name="user_name" class="form-control" id="user_name" aria-describedby="nameHelp" required>
+            <input type="text" name="user_name" class="form-control" id="user_name" aria-describedby="nameHelp" autofocus required>
             <div id="nameHelp" class="form-text">
               <p>Introduce tu nombre de usuario</p>
             </div>
