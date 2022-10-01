@@ -9,7 +9,7 @@
     $email = $_POST['user_email'];
     $password = $_POST['user_pass'];
     
-    $sql_verify = "SELECT * FROM users WHERE user_email = '$email'";
+    $sql_verify = "SELECT * FROM usuarios WHERE user_email = '$email'";
 
     try{
 
@@ -22,7 +22,7 @@
     } else{
 
       $isRepeated = false;
-      $sql_insert = "INSERT INTO users(user_name, user_surname, user_email, user_pass) VALUES (?,?,?,?)";
+      $sql_insert = "INSERT INTO usuarios(user_name, user_surname, user_email, user_pass) VALUES (?,?,?,?)";
 
       $add_user = $pdoConnection->prepare($sql_insert);
       $add_user->execute(array($name, $surname, $email, $password));

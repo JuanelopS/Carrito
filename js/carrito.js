@@ -1,7 +1,7 @@
 
 window.onload = () => {
 
-  const productos = document.querySelectorAll('.productos');
+  const productos = document.querySelectorAll('.producto');
   const compra = document.querySelector('#carrito');
   
   compra.insertAdjacentHTML('afterend', `<p id="textoTotal">Total:</p>`);
@@ -35,6 +35,8 @@ window.onload = () => {
       let nombre = fruta.childNodes[1].getAttribute('nombre');
       let precio = Number(fruta.childNodes[1].getAttribute('precio'));
       let unidad = fruta.childNodes[1].getAttribute('unidad');
+
+      // console.log(nombre,precio,unidad)
 
       agregarFruta(nombre, precio, unidad);
     });

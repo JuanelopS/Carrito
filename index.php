@@ -24,7 +24,7 @@ include_once './php/connect.php';
         <nav class="navbar bg-light">
             <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra</span>
-            <span class="text-right">
+            <span class="text-right header-links">
 
                 <!-- Indicación en el header del usuario actualmente logueado y opción de logout -->
                 <?php
@@ -44,103 +44,144 @@ include_once './php/connect.php';
         <section class="text-center mb-5">
             <div id="presentacio">
                 <h2 id="logo"><span id="logo-texto">CARRITO  </span><lord-icon src="https://cdn.lordicon.com/waqyacxh.json" trigger="hover"style="width:250px;height:250px" class="img-fluid"></lord-icon></h2>
-                <p>Elige la fruta que deseas haciendo click sobre su imagen.</p>
             </div>
         </section>
         <section id="productos mb-5">
-            <div class="row fruites text-center">
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Manzana Royal Gala" precio="2.50" unidad="kilo">
-                        <img class="imatges" src="img/manzana-royal-gala.jpg" alt="Manzana Royal Gala a 2.50€ el kilo">
-                        <p class="producto-nombre">Manzana Royal Gala</p>
-                        <p><span class="producto-precio">2.50</span>€/kilo</p>
-                    </a>
-                </div>
+            <div class="row items text-center">
+                
+                    <div class="card producto">
+                        <a href="#compra" nombre="Manzana Royal Gala" precio="2.50" unidad="kilo">
+                            <img class="imatges" src="img/manzana-royal-gala.jpg" alt="Manzana Royal Gala a 2.50€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Manzana Royal Gala</p>
+                                <p class="card-text"><span class="producto-precio">2.50</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Manzana Golden" precio="1.30" unidad="kilo">
-                        <img class="imatges" src="img/manzana-golden-800g.jpg" alt="Manzana Golden a 1.30€ el kilo">
-                        <p class="producto-nombre">Manzana Golden</p>
-                        <p><span class="producto-precio">2.50</span>€/kilo</p>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Higos" precio="8.80" unidad="kilo">
-                        <img class="imatges" src="img/higos-500g.jpg" alt="Higos a 8.90€ el kilo">
-                        <p class="producto-nombre" nombre="Higos" precio="8.80">Higos</p>
-                        <span class="producto-precio">8.80 €/kilo</span>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Pera Ercolini" precio="3.20" unidad="kilo">
-                        <img class="imatges" src="img/pera-ercollini-800gr.jpg" alt="Pera a 3.20€ el kilo">
-                        <p class="producto-nombre">Pera Ercolini</p>
-                        <p><span class="producto-precio">3.20</span>€/kilo</p>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Plátano" precio="3.45" unidad="kilo">
-                        <img class="imatges" src="img/platanos-800g.jpg" alt="Platano a 3.45€ el kilo">
-                        <p class="producto-nombre">Plátano</p>
-                        <p><span class="producto-precio">3.45</span>€/unidad</p>
-                    </a>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Melocotón" precio="5.25" unidad="kilo">
-                        <img class="imatges" src="img/melocoton-amarillo-1kg.jpg"
-                            alt="Melocotón amarillo a 5.25€ el kilo">
-                        <p class="producto-nombre">Melocotón</p>
-                        <p><span class="producto-precio">5.25</span>€/kilo</p>
-                    </a>
-                </div>
+                    <div class="card producto">
+                        <a href="#compra" nombre="Manzana Golden" precio="1.30" unidad="kilo">
+                            <img class="imatges" src="img/manzana-golden-800g.jpg" alt="Manzana Golden a 1.30€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Manzana Golden</p>
+                                <p class="card-text"><span class="producto-precio">1.30</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
 
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Aguacates" precio="7.55" unidad="kilo">
-                        <img class="imatges" src="img/aguacates-1kg.jpg" alt="Aguacates a 2.50€ el kilo">
-                        <p class="producto-nombre">Aguacates</p>
-                        <p><span class="producto-precio">7.55</span>€/unidad</p>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Ciruela roja" precio="2.50" unidad="kilo">
-                        <img class="imatges" src="img/ciruela-roja-800g.jpg" alt="Ciruela roja a 2.45€ el kilo">
-                        <p class="producto-nombre">Ciruela roja</p>
-                        <p><span class="producto-precio">2.50</span>€/kilo</p>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Pomelo" precio="2.80" unidad="kilo">
-                        <img class="imatges" src="img/pomelo-1kg.jpg" alt="Pomelo a 2.80€ el kilo">
-                        <p class="producto-nombre" nombre="Pomelo" precio="2.80">Pomelo</p>
-                        <span class="producto-precio">2.80 €/kilo</span>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Piña" precio="8.75" unidad="unidad">
-                        <img class="imatges" src="img/pina-1ud.jpg" alt="Piña a 8.75€ la unidad">
-                        <p class="producto-nombre">Piña</p>
-                        <p><span class="producto-precio">8.75</span>€/unidad</p>
-                    </a>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Coco" precio="6.45" unidad="unidad">
-                        <img class="imatges" src="img/coco-1ud.jpg" alt="Coco a 6.45€ la unidad">
-                        <p class="producto-nombre">Coco</p>
-                        <p><span class="producto-precio">6.45</span>€/unidad</p>
-                    </a>
-                </div>
+                    <div class="card producto">
+                        <a href="#compra" nombre="Higos" precio="8.80" unidad="kilo">
+                            <img class="imatges" src="img/higos-500g.jpg" alt="Higos a 8.80€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Higos</p>
+                                <p class="card-text"><span class="producto-precio">8.80</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="card producto">
+                        <a href="#compra" nombre="Pera Ercolini" precio="3.20" unidad="kilo">
+                            <img class="imatges" src="img/pera-ercollini-800gr.jpg" alt="Pera a 3.20€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Pera Ercolini</p>
+                                <p class="card-text"><span class="producto-precio">3.20</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Plátano" precio="3.45" unidad="kilo">
+                            <img class="imatges" src="img/platanos-800g.jpg" alt="Platano a 3.45€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Plátanos</p>
+                                <p class="card-text"><span class="producto-precio">3.45</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Melocotón" precio="5.25" unidad="kilo">
+                            <img class="imatges" src="img/melocoton-amarillo-1kg.jpg">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Melocotón</p>
+                                <p class="card-text"><span class="producto-precio">5.25</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Aguacates" precio="7.55" unidad="kilo">
+                            <img class="imatges" src="img/aguacates-1kg.jpg" alt="Aguacates a 7.55€ el kilo">   
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Aguacates</p>
+                                <p class="card-text"><span class="producto-precio">7.55</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Ciruela roja" precio="2.45" unidad="kilo">
+                            <img class="imatges" src="img/ciruela-roja-800g.jpg" alt="Ciruela roja a 2.45€ el kilo"> 
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Ciruela Roja</p>
+                                <p class="card-text"><span class="producto-precio">2.45</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                       <a href="#compra" nombre="Pomelo" precio="2.80" unidad="kilo">
+                            <img class="imatges" src="img/pomelo-1kg.jpg" alt="Pomelo a 2.80€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Pomelo</p>
+                                <p class="card-text"><span class="producto-precio">2.80</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Piña" precio="8.75" unidad="unidad">
+                            <img class="imatges" src="img/pina-1ud.jpg" alt="Piña a 8.75€ la unidad">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Piña</p>
+                                <p class="card-text"><span class="producto-precio">8.75</span>€/unidad</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Coco" precio="6.45" unidad="unidad">
+                            <img class="imatges" src="img/coco-1ud.jpg" alt="Coco a 6.45€ la unidad">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Coco</p>
+                                <p class="card-text"><span class="producto-precio">6.45</span>€/unidad</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="card producto">
+                        <a href="#compra" nombre="Kiwi" precio="5.25" unidad="kilo">
+                            <img class="imatges" src="img/kiwi-verde-800g.jpg" alt="Kiwi verde a 5.25€ el kilo">
+                            <div class="card-body">
+                                <p class="producto-nombre card-title">Kiwi</p>
+                                <p class="card-text"><span class="producto-precio">5.25</span>€/kilo</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+
+                    
+                <!-- 
+
                 <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
                     <a href="#compra" nombre="Kiwi" precio="5.25" unidad="kilo">
                         <img class="imatges" src="img/kiwi-verde-800g.jpg" alt="Kiwi verde a 5.25€ el kilo">
                         <p class="producto-nombre">Kiwi</p>
                         <p><span class="producto-precio">5.25</span>€/kilo</p>
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
-
-        <br><br>  <!-- CHAPUZA TEMPORAL -->
 
         <section id="compra mb-5">
             <div>
@@ -151,6 +192,7 @@ include_once './php/connect.php';
                 <p id="carrito">Aún no ha comprado nada</p>
             </div>
         </section>
+
     </div>
     <footer class="bg-light text-center text-lg-start mt-5">
     <div class="container p-4 pb-0">

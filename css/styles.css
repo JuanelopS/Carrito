@@ -42,6 +42,8 @@ header {
     box-shadow: 0 0 12px var(--main-color);
 }
 
+/* imagen plantita */
+
 .fa-seedling {
     color: var(--main-color);
 }
@@ -51,21 +53,32 @@ header {
     font-size: 10vw;
 }
 
-.productos{
-    margin-bottom: 1rem;
+/* productos */
+
+.items {
+    display: grid;
+    gap: 1rem;
+    grid-auto-flow: dense;
+    grid-auto-rows: 18rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); /* magia, thx codely.tv <3 */
+    margin: 5px;
+    margin-bottom: 4rem;
 }
 
-.productos:hover {
+.producto:hover {
     border: 1px solid var(--main-color);
-    border-radius: 15px;
-    box-shadow: 0 0 12px var(--main-color);
-    font-size: 1.2rem;
-    background-color: white;
+    box-shadow: 0 0 26px var(--main-color);
+}
+
+.card-body {
+    letter-spacing: 1px;
 }
 
 #compra{
     margin-bottom: 100px;
 }
+
+/* icono borrar item */
 
 .fa-circle-xmark {
     color: rgb(176, 23, 23);

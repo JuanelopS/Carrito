@@ -3,7 +3,7 @@ session_start();
 
 include_once './connect.php';
 // consulta bd para mostrar nº de usuarios
-$count_query = "SELECT * FROM users";
+$count_query = "SELECT * FROM usuarios";
 
 try {
   $count_user = $pdoConnection->prepare($count_query);

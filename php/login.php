@@ -5,13 +5,19 @@
   $name = $_POST['user_name'];
   $password = $_POST['user_pass'];
 
-  $login_query = "SELECT * FROM users 
+  $login_query = "SELECT * FROM usuarios
                   WHERE user_name='$name' AND user_pass='$password'";
 
   // consulta usuario/contraseña
   try {
     $login_user = $pdoConnection->prepare($login_query);
     $login_user->execute(array());
+
+    // recojo el id del usuario logueado para posteriormente: 1. pasarlo a variable de sesión, 2. insertarlo como campo en la posible compra
+    $result = $login_user->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as $key => $value){
+      $_SESSION['user_id'] = $value['user_id'] ;
+    }
 
     if($login_user->rowCount() > 0){
       // echo "hola $name <a href='../index.php'>Volver</a>";

@@ -13,11 +13,11 @@
   
   /* Inserción de compra en la base de datos */
 
-  $sql_insert = "INSERT INTO compra(id_compra, usuario_compra, total_compra, fecha_compra) VALUES (default, ?, ?, default)";
+  $sql_insert = "INSERT INTO compra(id_compra, id_usuario_compra, total_compra, fecha_compra) VALUES (default, ?, ?, default)";
 
   try {
       $add_compra = $pdoConnection->prepare($sql_insert);
-      $add_compra->execute(array($_SESSION["user"], $total));
+      $add_compra->execute(array($_SESSION["user_id"], $total));
   } catch (Exception $err){
     print "Error!: " . $err->getMessage() . "<br>";
     die();

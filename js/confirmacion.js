@@ -1,4 +1,4 @@
-/* Fichero para traslador los datos del carrito (localStorage) a PHP para su 
+/* Fichero para trasladar los datos del carrito (localStorage) a PHP para su 
    posterior almacenamiento en la base de datos si se confirma la compra */
 
 window.onload = () => {

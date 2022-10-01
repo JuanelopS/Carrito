@@ -2,7 +2,7 @@
   session_start();
   include_once './connect.php';
 
-  $list_query = "SELECT * FROM users";
+  $list_query = "SELECT * FROM usuarios";
 
   // variable de listado de usuarios
   try {
