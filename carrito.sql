@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 01-10-2022 a les 16:07:44
+-- Temps de generació: 01-10-2022 a les 23:59:42
 -- Versió del servidor: 10.4.24-MariaDB
 -- Versió de PHP: 8.1.6
 
@@ -53,7 +53,9 @@ CREATE TABLE `compra` (
 
 INSERT INTO `compra` (`id_compra`, `id_usuario_compra`, `total_compra`, `fecha_compra`) VALUES
 (5, 15, 1392.00, '2022-10-01 15:36:47'),
-(6, 15, 727.90, '2022-10-01 15:48:58');
+(6, 15, 727.90, '2022-10-01 15:48:58'),
+(8, 15, 131.15, '2022-10-01 23:53:42'),
+(9, 15, 142.15, '2022-10-01 23:55:11');
 
 -- --------------------------------------------------------
 
@@ -65,8 +67,29 @@ CREATE TABLE `items` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `precio` float(10,2) NOT NULL,
-  `unidad` varchar(6) NOT NULL
+  `unidad` varchar(6) NOT NULL,
+  `imagen` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Bolcament de dades per a la taula `items`
+--
+
+INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
+(1, 'Manzana Royal Gala', 2.50, 'kilo', 'manzana-royal-gala.jpg'),
+(2, 'Manzana Golden', 1.30, 'kilo', 'manzana-golden-800g.jpg'),
+(3, 'Higos', 8.80, 'kilo', 'higos-500g.jpg'),
+(4, 'Pera Ercolini', 3.20, 'kilo', 'pera-ercollini-800gr.jpg'),
+(5, 'Plátanos', 3.45, 'kilo', 'platanos-800g.jpg'),
+(6, 'Melocotón', 5.25, 'kilo', 'melocoton-amarillo-1kg.jpg'),
+(7, 'Aguacates', 7.55, 'kilo', 'aguacates-1kg.jpg'),
+(8, 'Ciruela Roja', 2.45, 'kilo', 'ciruela-roja-800g.jpg'),
+(9, 'Pomelo', 2.80, 'kilo', 'pomelo-1kg.jpg'),
+(10, 'Piña', 8.75, 'unidad', 'pina-1ud.jpg'),
+(11, 'Coco', 6.45, 'unidad', 'coco-1ud.jpg'),
+(12, 'Kiwi', 5.25, 'kilo', 'kiwi-verde-800g.jpg'),
+(14, 'Uva Morada', 2.30, 'kilo', 'uva_morada.png'),
+(15, 'Sandía', 8.00, 'unidad', 'sandia.webp');
 
 -- --------------------------------------------------------
 
@@ -89,7 +112,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`user_id`, `user_name`, `user_surname`, `user_pass`, `user_email`) VALUES
 (1, 'admin', 'admin', 'admin', 'admin@admin.com'),
 (15, 'Juan', 'Gavira', 'Holamundo1', 'mail@prueba.com'),
-(16, 'Pedro', 'Picapiedra', 'holaMundo2', 'piedra@piedra.es');
+(17, 'Carita', 'Bonita', 'Caritabonita89', 'carita@bonita.es');
 
 --
 -- Índexs per a les taules bolcades
@@ -134,19 +157,19 @@ ALTER TABLE `cesta`
 -- AUTO_INCREMENT per la taula `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la taula `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT per la taula `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Restriccions per a les taules bolcades
