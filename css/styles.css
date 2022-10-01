@@ -46,6 +46,7 @@ header {
 
 .fa-seedling {
     color: var(--main-color);
+    margin-right: 1rem;
 }
 
 #logo {

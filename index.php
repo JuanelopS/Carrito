@@ -51,7 +51,7 @@ include_once './php/connect.php';
                 
                     <div class="card producto">
                         <a href="#compra" nombre="Manzana Royal Gala" precio="2.50" unidad="kilo">
-                            <img class="imatges" src="img/manzana-royal-gala.jpg" alt="Manzana Royal Gala a 2.50€ el kilo">
+                            <img class="imatges" src="./img/manzana-royal-gala.jpg" alt="Manzana Royal Gala a 2.50€ el kilo">
                             <div class="card-body">
                                 <p class="producto-nombre card-title">Manzana Royal Gala</p>
                                 <p class="card-text"><span class="producto-precio">2.50</span>€/kilo</p>

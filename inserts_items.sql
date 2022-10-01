@@ -1,0 +1,12 @@
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Manzana Royal Gala',2.50,'kilo','./img/manzana-royal-gala.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Manzana Golden',1.30, 'kilo','./img/manzana-golden-800g.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Higos',8.80,'kilo','./img/higos-500g.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Pera Ercolini',3.20,'kilo','./img/pera-ercollini-800gr.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Plátanos',3.45,'kilo','./img/platanos-800g.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Melocotón',5.25,'kilo','./img/melocoton-amarillo-1kg.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Aguacates',7.55,'kilo','./img/aguacates-1kg.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Ciruela Roja',2.45,'kilo','./img/ciruela-roja-800g.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Pomelo',2.80,'kilo','./img/pomelo-1kg.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Piña',8.75,'unidad','./img/pina-1ud.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Coco',6.45,'unidad','./img/coco-1ud.jpg');
+INSERT INTO `items`(`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES (DEFAULT,'Kiwi',5.25,'kilo','./img/kiwi-verde-800g.jpg');
