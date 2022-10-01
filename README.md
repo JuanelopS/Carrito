@@ -6,21 +6,21 @@ Estoy totalmente abierto a comentarios para mejorarlo 💕
 
 Pendiente:
 
-- Relacionar base de datos (compras con usuarios, etc...)
+- Mayor relación entre las distintas tablas de la base de datos.
 
-- Mejorar información del panel de admin (actualmente solo muestra/edita/borra usuarios)
+- Mejorar admin.php (falta editar/borrar productos como prioridad)
 
-- Crear panel de usuario para ver sus compras anteriores, cambiar sus datos, etc
+- mejorar usuario.php (actualmente solo muestra las compras de cada usuario pero sin detalle de cada una)
 
-- Formulario para añadir items / contacto
+- Formulario de contacto
 
 - Modo día/noche
 
-- Seguridad php/mysql
+- Mayor seguridad php/mysql
 
 - Más cosillas que no se me ocurren ahora mismo...
 
-Un pequeño extracto...
+Un pequeño extracto de spaghetti code...
 
 ```js
  const agregarFruta = (nombre, precio, unidad) => {
