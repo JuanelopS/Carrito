@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Temps de generació: 26-09-2022 a les 16:03:02
+-- Temps de generació: 01-10-2022 a les 16:07:44
 -- Versió del servidor: 10.4.24-MariaDB
 -- Versió de PHP: 8.1.6
 
@@ -42,19 +42,40 @@ CREATE TABLE `cesta` (
 
 CREATE TABLE `compra` (
   `id_compra` int(11) NOT NULL,
-  `usuario_compra` varchar(50) NOT NULL,
+  `id_usuario_compra` int(11) NOT NULL,
   `total_compra` float(10,2) NOT NULL,
-  `fecha_compra` date NOT NULL DEFAULT current_timestamp()
+  `fecha_compra` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Bolcament de dades per a la taula `compra`
+--
+
+INSERT INTO `compra` (`id_compra`, `id_usuario_compra`, `total_compra`, `fecha_compra`) VALUES
+(5, 15, 1392.00, '2022-10-01 15:36:47'),
+(6, 15, 727.90, '2022-10-01 15:48:58');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de la taula `items`
+--
+
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `precio` float(10,2) NOT NULL,
+  `unidad` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `users`
+-- Estructura de la taula `usuarios`
 --
 
-CREATE TABLE `users` (
-  `user_id` int(2) NOT NULL,
+CREATE TABLE `usuarios` (
+  `user_id` int(11) NOT NULL,
   `user_name` varchar(20) NOT NULL,
   `user_surname` varchar(50) NOT NULL,
   `user_pass` varchar(20) NOT NULL,
@@ -62,11 +83,13 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `users`
+-- Bolcament de dades per a la taula `usuarios`
 --
 
-INSERT INTO `users` (`user_id`, `user_name`, `user_surname`, `user_pass`, `user_email`) VALUES
-(1, 'admin', '', 'admin', '');
+INSERT INTO `usuarios` (`user_id`, `user_name`, `user_surname`, `user_pass`, `user_email`) VALUES
+(1, 'admin', 'admin', 'admin', 'admin@admin.com'),
+(15, 'Juan', 'Gavira', 'Holamundo1', 'mail@prueba.com'),
+(16, 'Pedro', 'Picapiedra', 'holaMundo2', 'piedra@piedra.es');
 
 --
 -- Índexs per a les taules bolcades
@@ -82,12 +105,19 @@ ALTER TABLE `cesta`
 -- Índexs per a la taula `compra`
 --
 ALTER TABLE `compra`
-  ADD PRIMARY KEY (`id_compra`);
+  ADD PRIMARY KEY (`id_compra`),
+  ADD KEY `id_usuario_compra` (`id_usuario_compra`);
 
 --
--- Índexs per a la taula `users`
+-- Índexs per a la taula `items`
 --
-ALTER TABLE `users`
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índexs per a la taula `usuarios`
+--
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`user_id`);
 
 --
@@ -104,13 +134,29 @@ ALTER TABLE `cesta`
 -- AUTO_INCREMENT per la taula `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT per la taula `users`
+-- AUTO_INCREMENT per la taula `items`
 --
-ALTER TABLE `users`
-  MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la taula `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- Restriccions per a les taules bolcades
+--
+
+--
+-- Restriccions per a la taula `compra`
+--
+ALTER TABLE `compra`
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`id_usuario_compra`) REFERENCES `usuarios` (`user_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
