@@ -81,19 +81,19 @@
 
               foreach ($resultados_lista_usuarios as $key => $value) {
                 echo
-                "
-                <tr class='align-middle'>
+                "<tr class='align-middle'>
                   <th scope='row'>" . $value['user_id'] . "</th>
                   <td>" . $value['user_name'] . "</td>
                   <td>" . $value['user_surname'] . "</td>
                   <td>" . $value['user_email'] . "</td>
                   <td>" . $value['user_pass'] . "</td>
                   <td class='text-end'>
-                    <a id='btn-info' class='btn btn-info btn-sm disabled'>Info</a>
+                    <a href='usuario.php?user_id=" . $value['user_id'] . "' class='btn btn-info btn-sm'>Info</a>
                     <a href='editarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-success btn-sm btn-edit'>Editar</a>
                     <a href='borrarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-danger btn-sm btn-delete'>Borrar</a>
                   </td>
-                </tr>";
+                </tr>
+                ";
               }
           echo "
               </tbody> 
@@ -127,7 +127,7 @@
                   <th scope='row'>" . $value['id'] . "</th>
                   <td><img src='../img/" . $value['imagen'] . "' class='items-img-min'></td>
                   <td>" . $value['nombre'] . "</td>
-                  <td>" . $value['precio'] . "</td>
+                  <td>" . number_format($value['precio'],2) . "</td>
                   <td>" . $value['unidad'] . "</td>
                   <td class='text-end'>
                     <a id='btn-info' class='btn btn-success btn-sm disabled'>Editar</a>

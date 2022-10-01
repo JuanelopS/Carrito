@@ -42,7 +42,7 @@ window.onload = () => {
 
   btnCancelar.addEventListener('click', () => {
     localStorage.setItem('listaCompra', JSON.stringify([]) );
-    window.location.href = '../index.php'
+    window.location.href = '../index.php';
   });
 
   const btnConfirmar = document.querySelector('#btnConfirmar');
@@ -67,9 +67,5 @@ window.onload = () => {
     localStorage.setItem('listaCompra', JSON.stringify([]) );
     window.location.href = './gracias.php';
   });
-
-  
-
-  
 
 }

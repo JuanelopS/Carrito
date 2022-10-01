@@ -65,7 +65,7 @@
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra - Añadir producto</span>
         <span class="text-right">
-          <a href="../admin.php">Volver</a>
+          <a href="./admin.php">Volver</a>
         </span>
       </div>
     </nav>
@@ -128,7 +128,7 @@
 
         <div class="offset-2 col-8 offset-1 btn-group-lg btn-group mt-3" role="group" aria-label="Boton para crear un nuevo usuario">
           <button type="submit" class="btn btn-success" id="btnAddProducto">Aceptar</button>
-          <button type="clear" class="btn btn-danger" id="btnBorrarProducto">Borrar</button>
+          <button type="reset" class="btn btn-danger" id="btnBorrarProducto">Borrar</button>
         </div>
 
       </form>

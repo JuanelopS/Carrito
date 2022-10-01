@@ -42,6 +42,10 @@ header {
     box-shadow: 0 0 12px var(--main-color);
 }
 
+.header-links *{
+    margin-left: .5rem;
+}
+
 /* imagen plantita */
 
 .fa-seedling {
@@ -66,6 +70,7 @@ header {
     margin-bottom: 4rem;
 }
 
+
 .producto:hover {
     border: 1px solid var(--main-color);
     box-shadow: 0 0 26px var(--main-color);
@@ -73,6 +78,14 @@ header {
 
 .card-body {
     letter-spacing: 1px;
+    border-top: 2px solid var(--main-color);
+    background-color: rgba(152, 188, 152, 0.147);
+    border-radius: 5px;
+}
+
+.imagen_producto {
+    width: 190px;
+    height: 190px;
 }
 
 #compra{

@@ -1,7 +1,6 @@
 <?php
-session_start();
-include_once './connect.php';
-
+  session_start();
+  include_once './connect.php';
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +28,7 @@ include_once './connect.php';
           <?php
             // echo session_id();
             if(isset($_SESSION["user"])){
-              echo "Bienvenido " . $_SESSION["user"] . " <small><a href='./logout.php'>Cerrar sesión</a></small>";
+              echo $_SESSION["user"] . " <small><a href='./logout.php'>Cerrar sesión</a></small>";
             } else {
               echo "<a href='../index.php'>Volver</a>";
             }

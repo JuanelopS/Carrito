@@ -1,7 +1,19 @@
 <?php
-session_start();
-include_once './php/connect.php';
+    session_start();
+    include_once './php/connect.php';
 
+    // CONSULTA DE PRODUCTOS A MOSTRAR
+    $lista_productos_query = 'SELECT * FROM items';
+
+    try {
+        $lista_productos_connect = $pdoConnection->prepare($lista_productos_query);
+        $lista_productos_connect->execute(array());
+        $resultados_lista_productos = $lista_productos_connect->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch (Exception $err){
+    print 'Error!: ' . $err->getMessage() . '<br>';
+    die();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -28,12 +40,17 @@ include_once './php/connect.php';
 
                 <!-- Indicación en el header del usuario actualmente logueado y opción de logout -->
                 <?php
-                // echo session_id();
-                if(isset($_SESSION["user"])){
-                    echo "Bienvenido " . $_SESSION["user"] . " <small><a href='./php/logout.php'>Cerrar sesión</a></small>";
-                } else{
-                    echo "<a href='./php/entrar.php'>Entrar</a> / <a href='./php/registro.php'>Crear usuario</a>";
-                }
+                    // echo session_id();
+                    if(isset($_SESSION["user"])){
+                        if($_SESSION["user"] == 'admin'){
+                            echo " <a href='./php/admin.php'>Panel de administración</a> ";
+                        }else {
+                        echo "Bienvenido<a href='./php/usuario.php?user_id=" . $_SESSION['user_id'] . "'>" . $_SESSION['user'] . "</a>";
+                        }
+                        echo "<small><a href='./php/logout.php'>Cerrar sesión</a></small>";
+                    } else{
+                        echo "<a href='./php/entrar.php'>Entrar</a>  <a href='./php/registro.php'>Crear usuario</a>";
+                    }
                 ?>
 
             </span>
@@ -42,144 +59,34 @@ include_once './php/connect.php';
     </header>
     <div class="container">
         <section class="text-center mb-5">
-            <div id="presentacio">
+            <div id="presentacion">
                 <h2 id="logo"><span id="logo-texto">CARRITO  </span><lord-icon src="https://cdn.lordicon.com/waqyacxh.json" trigger="hover"style="width:250px;height:250px" class="img-fluid"></lord-icon></h2>
             </div>
         </section>
         <section id="productos mb-5">
             <div class="row items text-center">
                 
-                    <div class="card producto">
-                        <a href="#compra" nombre="Manzana Royal Gala" precio="2.50" unidad="kilo">
-                            <img class="imatges" src="./img/manzana-royal-gala.jpg" alt="Manzana Royal Gala a 2.50€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Manzana Royal Gala</p>
-                                <p class="card-text"><span class="producto-precio">2.50</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Manzana Golden" precio="1.30" unidad="kilo">
-                            <img class="imatges" src="img/manzana-golden-800g.jpg" alt="Manzana Golden a 1.30€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Manzana Golden</p>
-                                <p class="card-text"><span class="producto-precio">1.30</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Higos" precio="8.80" unidad="kilo">
-                            <img class="imatges" src="img/higos-500g.jpg" alt="Higos a 8.80€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Higos</p>
-                                <p class="card-text"><span class="producto-precio">8.80</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
                     
-                    <div class="card producto">
-                        <a href="#compra" nombre="Pera Ercolini" precio="3.20" unidad="kilo">
-                            <img class="imatges" src="img/pera-ercollini-800gr.jpg" alt="Pera a 3.20€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Pera Ercolini</p>
-                                <p class="card-text"><span class="producto-precio">3.20</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
+                    <?php
+                        /* MOSTRAR LOS ITEMS PARA COMPRAR EN PANTALLA */
 
-                    <div class="card producto">
-                        <a href="#compra" nombre="Plátano" precio="3.45" unidad="kilo">
-                            <img class="imatges" src="img/platanos-800g.jpg" alt="Platano a 3.45€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Plátanos</p>
-                                <p class="card-text"><span class="producto-precio">3.45</span>€/kilo</p>
+                        foreach ($resultados_lista_productos as $key => $value) {
+                            echo
+                            "
+                            <div class='card producto'>
+                                <a href='#compra' nombre='" . $value['nombre'] . "' precio='" . $value['precio']. "' unidad='" . $value['unidad']. "'>
+                                    <img class='imagen_producto' src='./img/" . $value['imagen'] . "' alt='" . $value['nombre'] . "'>
+                                    <div class='card-body'>
+                                        <p class='producto-nombre card-title'>" . $value['nombre'] . "</p>
+                                        <p class='card-text'><span class='producto-precio'>" . number_format($value['precio'], 2) . "</span>€/" . $value['unidad'] . "</p>
+                                    </div>
+                                </a>
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Melocotón" precio="5.25" unidad="kilo">
-                            <img class="imatges" src="img/melocoton-amarillo-1kg.jpg">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Melocotón</p>
-                                <p class="card-text"><span class="producto-precio">5.25</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Aguacates" precio="7.55" unidad="kilo">
-                            <img class="imatges" src="img/aguacates-1kg.jpg" alt="Aguacates a 7.55€ el kilo">   
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Aguacates</p>
-                                <p class="card-text"><span class="producto-precio">7.55</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Ciruela roja" precio="2.45" unidad="kilo">
-                            <img class="imatges" src="img/ciruela-roja-800g.jpg" alt="Ciruela roja a 2.45€ el kilo"> 
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Ciruela Roja</p>
-                                <p class="card-text"><span class="producto-precio">2.45</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                       <a href="#compra" nombre="Pomelo" precio="2.80" unidad="kilo">
-                            <img class="imatges" src="img/pomelo-1kg.jpg" alt="Pomelo a 2.80€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Pomelo</p>
-                                <p class="card-text"><span class="producto-precio">2.80</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Piña" precio="8.75" unidad="unidad">
-                            <img class="imatges" src="img/pina-1ud.jpg" alt="Piña a 8.75€ la unidad">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Piña</p>
-                                <p class="card-text"><span class="producto-precio">8.75</span>€/unidad</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Coco" precio="6.45" unidad="unidad">
-                            <img class="imatges" src="img/coco-1ud.jpg" alt="Coco a 6.45€ la unidad">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Coco</p>
-                                <p class="card-text"><span class="producto-precio">6.45</span>€/unidad</p>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="card producto">
-                        <a href="#compra" nombre="Kiwi" precio="5.25" unidad="kilo">
-                            <img class="imatges" src="img/kiwi-verde-800g.jpg" alt="Kiwi verde a 5.25€ el kilo">
-                            <div class="card-body">
-                                <p class="producto-nombre card-title">Kiwi</p>
-                                <p class="card-text"><span class="producto-precio">5.25</span>€/kilo</p>
-                            </div>
-                        </a>
-                    </div>
+                            ";
+                          }
+  
+                    ?>
                     
-
-                    
-                <!-- 
-
-                <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 productos">
-                    <a href="#compra" nombre="Kiwi" precio="5.25" unidad="kilo">
-                        <img class="imatges" src="img/kiwi-verde-800g.jpg" alt="Kiwi verde a 5.25€ el kilo">
-                        <p class="producto-nombre">Kiwi</p>
-                        <p><span class="producto-precio">5.25</span>€/kilo</p>
-                    </a>
-                </div> -->
             </div>
         </section>
 
@@ -213,7 +120,7 @@ include_once './php/connect.php';
 
             <div class="col-auto mb-4 mb-md-0">
             <!-- Submit button -->
-            <button type="submit" class="btn btn-success mb-4">
+            <button type="submit" class="btn btn-success mb-4 disabled">
                 Subscríbete
             </button>
             </div>

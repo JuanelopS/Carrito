@@ -16,6 +16,7 @@
       $verify_user = $pdoConnection->prepare($sql_verify);
       $verify_user->execute(array());
 
+      // comprobación de si el usuario ya existe en la base de datos (según email)
     if($verify_user->rowCount() > 0){ 
       $isRepeated = true; 
 
