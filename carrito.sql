@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2022 at 10:18 AM
+-- Generation Time: Oct 02, 2022 at 02:51 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,6 +34,16 @@ CREATE TABLE `compra` (
   `fecha_compra` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `compra`
+--
+
+INSERT INTO `compra` (`id_compra`, `id_usuario_compra`, `total_compra`, `fecha_compra`) VALUES
+(15, 15, 123.25, '2022-10-02 11:42:35'),
+(16, 15, 290.90, '2022-10-02 11:43:27'),
+(17, 15, 26.80, '2022-10-02 13:57:00'),
+(18, 1, 39.35, '2022-10-02 14:11:52');
+
 -- --------------------------------------------------------
 
 --
@@ -41,7 +51,6 @@ CREATE TABLE `compra` (
 --
 
 CREATE TABLE `detalle_compra` (
-  `id_producto` int(11) NOT NULL,
   `nombre_producto` varchar(50) NOT NULL,
   `cantidad_producto` int(11) NOT NULL,
   `precio_producto` float(10,2) NOT NULL,
@@ -49,6 +58,29 @@ CREATE TABLE `detalle_compra` (
   `id_compra` int(11) NOT NULL,
   `id_usuario_compra` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detalle_compra`
+--
+
+INSERT INTO `detalle_compra` (`nombre_producto`, `cantidad_producto`, `precio_producto`, `precio_total_producto`, `id_compra`, `id_usuario_compra`) VALUES
+('Pera Ercolini', 23, 3.20, 73.60, 15, 15),
+('Manzana Golden', 23, 1.30, 29.90, 15, 15),
+('Manzana Royal Gala', 1, 2.50, 2.50, 15, 15),
+('Plátanos', 5, 3.45, 17.25, 15, 15),
+('Manzana Golden', 23, 1.30, 29.90, 16, 15),
+('Manzana Royal Gala', 12, 2.50, 30.00, 16, 15),
+('Ciruela Roja', 45, 2.45, 110.25, 16, 15),
+('Kiwi', 23, 5.25, 120.75, 16, 15),
+('Ciruela Roja', 1, 2.45, 2.45, 17, 15),
+('Pomelo', 1, 2.80, 2.80, 17, 15),
+('Piña', 1, 8.75, 8.75, 17, 15),
+('Aguacates', 1, 7.55, 7.55, 17, 15),
+('Melocotón', 1, 5.25, 5.25, 17, 15),
+('Uva Morada', 5, 2.30, 11.50, 18, 1),
+('Coco', 2, 6.45, 12.90, 18, 1),
+('Ciruela Roja', 1, 2.45, 2.45, 18, 1),
+('Manzana Royal Gala', 5, 2.50, 12.50, 18, 1);
 
 -- --------------------------------------------------------
 
@@ -82,7 +114,8 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
 (11, 'Coco', 6.45, 'unidad', 'coco-1ud.jpg'),
 (12, 'Kiwi', 5.25, 'kilo', 'kiwi-verde-800g.jpg'),
 (14, 'Uva Morada', 2.30, 'kilo', 'uva_morada.png'),
-(15, 'Sandía', 8.00, 'unidad', 'sandia.webp');
+(15, 'Sandía', 8.00, 'unidad', 'sandia.webp'),
+(16, 'Fresas', 4.15, 'kilo', 'fresas.png');
 
 -- --------------------------------------------------------
 
@@ -145,13 +178,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `usuarios`
