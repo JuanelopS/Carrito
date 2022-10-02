@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Temps de generació: 01-10-2022 a les 23:59:42
--- Versió del servidor: 10.4.24-MariaDB
--- Versió de PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Oct 02, 2022 at 10:18 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,26 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de dades: `carrito`
+-- Database: `carrito`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `cesta`
---
-
-CREATE TABLE `cesta` (
-  `id_producto` int(11) NOT NULL,
-  `nombre_producto` varchar(50) NOT NULL,
-  `precio_producto` float NOT NULL,
-  `cantidad_producto` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estructura de la taula `compra`
+-- Table structure for table `compra`
 --
 
 CREATE TABLE `compra` (
@@ -47,20 +34,26 @@ CREATE TABLE `compra` (
   `fecha_compra` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Bolcament de dades per a la taula `compra`
+-- Table structure for table `detalle_compra`
 --
 
-INSERT INTO `compra` (`id_compra`, `id_usuario_compra`, `total_compra`, `fecha_compra`) VALUES
-(5, 15, 1392.00, '2022-10-01 15:36:47'),
-(6, 15, 727.90, '2022-10-01 15:48:58'),
-(8, 15, 131.15, '2022-10-01 23:53:42'),
-(9, 15, 142.15, '2022-10-01 23:55:11');
+CREATE TABLE `detalle_compra` (
+  `id_producto` int(11) NOT NULL,
+  `nombre_producto` varchar(50) NOT NULL,
+  `cantidad_producto` int(11) NOT NULL,
+  `precio_producto` float(10,2) NOT NULL,
+  `precio_total_producto` float(10,2) NOT NULL,
+  `id_compra` int(11) NOT NULL,
+  `id_usuario_compra` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `items`
+-- Table structure for table `items`
 --
 
 CREATE TABLE `items` (
@@ -72,7 +65,7 @@ CREATE TABLE `items` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `items`
+-- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
@@ -94,7 +87,7 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de la taula `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -106,7 +99,7 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Bolcament de dades per a la taula `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`user_id`, `user_name`, `user_surname`, `user_pass`, `user_email`) VALUES
@@ -115,71 +108,73 @@ INSERT INTO `usuarios` (`user_id`, `user_name`, `user_surname`, `user_pass`, `us
 (17, 'Carita', 'Bonita', 'Caritabonita89', 'carita@bonita.es');
 
 --
--- Índexs per a les taules bolcades
+-- Indexes for dumped tables
 --
 
 --
--- Índexs per a la taula `cesta`
---
-ALTER TABLE `cesta`
-  ADD PRIMARY KEY (`id_producto`);
-
---
--- Índexs per a la taula `compra`
+-- Indexes for table `compra`
 --
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`id_compra`),
   ADD KEY `id_usuario_compra` (`id_usuario_compra`);
 
 --
--- Índexs per a la taula `items`
+-- Indexes for table `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  ADD KEY `id_compra` (`id_compra`),
+  ADD KEY `id_usuario_compra` (`id_usuario_compra`);
+
+--
+-- Indexes for table `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índexs per a la taula `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT per les taules bolcades
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la taula `cesta`
---
-ALTER TABLE `cesta`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la taula `compra`
+-- AUTO_INCREMENT for table `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT per la taula `items`
+-- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT per la taula `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- Restriccions per a les taules bolcades
+-- Constraints for dumped tables
 --
 
 --
--- Restriccions per a la taula `compra`
+-- Constraints for table `compra`
 --
 ALTER TABLE `compra`
   ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`id_usuario_compra`) REFERENCES `usuarios` (`user_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  ADD CONSTRAINT `detalle_compra_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `detalle_compra_ibfk_2` FOREIGN KEY (`id_usuario_compra`) REFERENCES `compra` (`id_usuario_compra`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

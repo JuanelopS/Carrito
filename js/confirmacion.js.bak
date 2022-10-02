@@ -52,9 +52,8 @@ window.onload = () => {
   
   btnConfirmar.addEventListener('click', () => {
 
-    /* Envio de la compra total a la tabla compra */
-    const urlDatosTotal = '../php/datosTotal.php';
-    fetch(urlDatosTotal, {
+    const url = '../php/datos_total.php';
+    fetch(url, {
         method: 'post',
         body: cantidadTotal.toFixed(2),
         headers: {
@@ -65,21 +64,6 @@ window.onload = () => {
       .then( text => console.log(text))
       .catch( error => console.error(error));
     
-    /* Envio de los detalles de la compra a la tabla compra */
-    const urlDatosDetalle = '../php/datosDetalle.php';
-    fetch(urlDatosDetalle, {
-      method: 'post',
-        body: listaCompraStorage,
-        headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then( response => response.text())
-      .then( text => console.log(text))
-      .catch( error => console.error(error));
-
-
-  
     localStorage.setItem('listaCompra', JSON.stringify([]) );
     window.location.href = './gracias.php';
   });

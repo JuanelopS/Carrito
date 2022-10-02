@@ -68,7 +68,7 @@
               if(isset($_SESSION['user'])){
                 echo "<button type='submit' class='btn btn-success' id='btnConfirmar'>Confirmar</button>";
               } else
-              echo "<button type='submit' class='btn btn-success' id='btnConfirmar' title='Sólo los usuarios registrados pueden confirmar su compra' disabled>Login?</button>"
+              echo "<button type='submit' class='btn btn-success' id='btnConfirmar' title='Sólo los usuarios registrados pueden confirmar su compra' disabled>Login?</button>";
           ?>
           
         </div>

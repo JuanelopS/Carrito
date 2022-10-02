@@ -23,7 +23,6 @@
     die();
   }
 
-
   // cerrando conexión con la db
   $add_compra = null;
   $pdoConnection = null;
