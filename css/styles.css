@@ -70,6 +70,9 @@ header {
     margin-bottom: 4rem;
 }
 
+.producto {
+    transition: all 600ms; /* smooth hover :-) */
+}
 
 .producto:hover {
     border: 1px solid var(--main-color);

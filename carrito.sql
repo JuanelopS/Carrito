@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2022 at 02:51 PM
+-- Generation Time: Oct 04, 2022 at 01:23 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `carrito`
 --
+CREATE DATABASE IF NOT EXISTS `carrito` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `carrito`;
 
 -- --------------------------------------------------------
 
@@ -27,12 +29,14 @@ SET time_zone = "+00:00";
 -- Table structure for table `compra`
 --
 
-CREATE TABLE `compra` (
-  `id_compra` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `compra` (
+  `id_compra` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario_compra` int(11) NOT NULL,
   `total_compra` float(10,2) NOT NULL,
-  `fecha_compra` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `fecha_compra` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id_compra`),
+  KEY `id_usuario_compra` (`id_usuario_compra`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `compra`
@@ -50,13 +54,15 @@ INSERT INTO `compra` (`id_compra`, `id_usuario_compra`, `total_compra`, `fecha_c
 -- Table structure for table `detalle_compra`
 --
 
-CREATE TABLE `detalle_compra` (
+CREATE TABLE IF NOT EXISTS `detalle_compra` (
   `nombre_producto` varchar(50) NOT NULL,
   `cantidad_producto` int(11) NOT NULL,
   `precio_producto` float(10,2) NOT NULL,
   `precio_total_producto` float(10,2) NOT NULL,
   `id_compra` int(11) NOT NULL,
-  `id_usuario_compra` int(11) NOT NULL
+  `id_usuario_compra` int(11) NOT NULL,
+  KEY `id_compra` (`id_compra`),
+  KEY `id_usuario_compra` (`id_usuario_compra`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -88,13 +94,14 @@ INSERT INTO `detalle_compra` (`nombre_producto`, `cantidad_producto`, `precio_pr
 -- Table structure for table `items`
 --
 
-CREATE TABLE `items` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `items` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) NOT NULL,
   `precio` float(10,2) NOT NULL,
   `unidad` varchar(6) NOT NULL,
-  `imagen` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `imagen` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `items`
@@ -115,7 +122,8 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
 (12, 'Kiwi', 5.25, 'kilo', 'kiwi-verde-800g.jpg'),
 (14, 'Uva Morada', 2.30, 'kilo', 'uva_morada.png'),
 (15, 'Sandía', 8.00, 'unidad', 'sandia.webp'),
-(16, 'Fresas', 4.15, 'kilo', 'fresas.png');
+(16, 'Fresas', 4.15, 'kilo', 'fresas.png'),
+(26, 'Pepino', 2.20, 'kilo', 'pepino.png');
 
 -- --------------------------------------------------------
 
@@ -123,13 +131,14 @@ INSERT INTO `items` (`id`, `nombre`, `precio`, `unidad`, `imagen`) VALUES
 -- Table structure for table `usuarios`
 --
 
-CREATE TABLE `usuarios` (
-  `user_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `usuarios` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(20) NOT NULL,
   `user_surname` varchar(50) NOT NULL,
   `user_pass` varchar(20) NOT NULL,
-  `user_email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `user_email` varchar(50) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usuarios`
@@ -139,58 +148,6 @@ INSERT INTO `usuarios` (`user_id`, `user_name`, `user_surname`, `user_pass`, `us
 (1, 'admin', 'admin', 'admin', 'admin@admin.com'),
 (15, 'Juan', 'Gavira', 'Holamundo1', 'mail@prueba.com'),
 (17, 'Carita', 'Bonita', 'Caritabonita89', 'carita@bonita.es');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `compra`
---
-ALTER TABLE `compra`
-  ADD PRIMARY KEY (`id_compra`),
-  ADD KEY `id_usuario_compra` (`id_usuario_compra`);
-
---
--- Indexes for table `detalle_compra`
---
-ALTER TABLE `detalle_compra`
-  ADD KEY `id_compra` (`id_compra`),
-  ADD KEY `id_usuario_compra` (`id_usuario_compra`);
-
---
--- Indexes for table `items`
---
-ALTER TABLE `items`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `compra`
---
-ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `items`
---
-ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT for table `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

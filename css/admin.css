@@ -71,6 +71,38 @@ table {
     width: 30px;
 }
 
+/* iconos panel de administración */
+
+
+.fa-solid:hover, .fa-regular:hover{
+    transform: scale(1.3);
+}
+
+.fa-solid, .fa-regular {
+    transition: all 300ms;
+}
+
+
+/* FOOTER */
+
+footer {
+    color: var(--main-color);
+    border-top: 1px solid var(--main-color);
+    box-shadow: 0 0 12px var(--main-color);
+
+}
+
+footer a {
+    color: var(--main-color);
+    letter-spacing: 1px;
+    font-weight: normal;
+}
+
+footer a:hover{
+    color: var(--main-color);
+}
+
+
 
 
 

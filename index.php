@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <header>
+    <header class='sticky-top'>
         <nav class="navbar bg-light">
             <div class="container-fluid">
             <span class="navbar-brand mb-0 h1"><i class="fa-solid fa-seedling"></i> Carrito de la compra</span>
@@ -57,7 +57,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container position-static">
         <section class="text-center mb-5">
             <div id="presentacion">
                 <h2 id="logo"><span id="logo-texto">CARRITO  </span><lord-icon src="https://cdn.lordicon.com/waqyacxh.json" trigger="hover"style="width:250px;height:250px" class="img-fluid"></lord-icon></h2>
@@ -132,7 +132,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3"> 
-        © 2022
+        &copy; <?php echo date('Y') ?>
         <a href=" #">Carrito</a>
     </div>
     <!-- Copyright -->

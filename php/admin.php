@@ -62,8 +62,8 @@
         if(isset($_SESSION['user']) && $_SESSION['user'] == 'admin'){
           echo "
         
-          <div class='col-5'>
-            <h3 class='text-center mb-4'>Lista de usuarios</h3>
+          <div class='col-md-12 col-lg-5 table-responsive mt-3'>
+            <h4 class='text-center mb-4'>Lista de usuarios</h4>
             <table class='table table-striped'>
               <thead>
                 <tr>
@@ -88,9 +88,9 @@
                   <td>" . $value['user_email'] . "</td>
                   <td>" . $value['user_pass'] . "</td>
                   <td class='text-end'>
-                    <a href='usuario.php?user_id=" . $value['user_id'] . "' class='btn btn-info btn-sm'>Info</a>
-                    <a href='editarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-success btn-sm btn-edit'>Editar</a>
-                    <a href='borrarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-danger btn-sm btn-delete'>Borrar</a>
+                    <a href='usuario.php?user_id=" . $value['user_id'] . "' class='btn btn-sm'><i class='fa-solid fa-info' style='color:blue'></i></a>
+                    <a href='editarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-sm btn-edit'><i class='fa-regular fa-pen-to-square' style='color:green'></i></a>
+                    <a href='borrarUsuario.php?user_id=" . $value['user_id'] . "'  class='btn btn-sm btn-delete'><i class='fa-solid fa-delete-left' style='color:red'></i></a>
                   </td>
                 </tr>
                 ";
@@ -102,8 +102,8 @@
               
           // listado de productos a la venta
           echo "
-          <div class='col-5'>
-            <h3 class='text-center mb-4'>Lista de productos</h3>
+          <div class='col-md-12 col-lg-5 table-responsive mt-3'>
+            <h4 class='text-center mb-4'>Lista de productos</h4>
             <table class='table table-striped'>
               <thead>
                 <tr>
@@ -124,14 +124,14 @@
                 echo
                 "
                 <tr class='align-middle'>
-                  <th scope='row'>" . $value['id'] . "</th>
+                  <th scope='row'>" . ($key+1) . "</th>
                   <td><img src='../img/" . $value['imagen'] . "' class='items-img-min'></td>
                   <td>" . $value['nombre'] . "</td>
                   <td>" . number_format($value['precio'],2) . "</td>
                   <td>" . $value['unidad'] . "</td>
                   <td class='text-end'>
-                    <a id='btn-info' class='btn btn-success btn-sm disabled'>Editar</a>
-                    <a id='btn-info' class='btn btn-danger btn-sm disabled'>Borrar</a>
+                    <a id='btn-info' class='btn btn-sm disabled'><i class='fa-regular fa-pen-to-square' style='color:green'></i></a>
+                    <a id='btn-info' class='btn btn-sm disabled'><i class='fa-solid fa-delete-left' style='color:red'></i></a>
                   </td>
                 </tr>";
               }
@@ -140,9 +140,9 @@
             </table>
           </div> 
           
-          <div class='col-2 text-center'>
-          <h3 class='mb-5'>Opciones</h3>
-          <a href='./addProducto.php' class='btn btn-dark btn-lg'>Añadir producto</a>
+          <div class='col-md-12 col-lg-2 mt-3 text-center'>
+          <h4 class='mb-5'>Opciones</h4>
+          <a href='./addProducto.php' class='btn btn-dark'>Añadir producto</a>
           </div>";
            
         } else echo "
@@ -154,5 +154,13 @@
         
     
   </main>
+  <footer class="bg-light text-center text-lg-start mt-5">
+    <!-- Copyright -->
+    <div class="text-center p-3"> 
+        &copy; <?php echo date('Y') ?>
+        <a href=" #">Carrito</a>
+    </div>
+    <!-- Copyright -->
+    </footer>
 </body>
 </html>

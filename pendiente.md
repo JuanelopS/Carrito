@@ -2,14 +2,13 @@
 
 - LocalStorage (previo al envio a la base de datos) (o cookies ?) ---------------- COMPLETADO!
 - Contenido carrito a la derecha fixed ( offcanvas body scrolling bootstrap? )
-- Relacionar bases de datos (usuarios y sus compras)
+- Comprobación item repetido en addProducto.php
+- Envio de imagen addProducto.php ------------------------------------------------ COMPLETADO! (hacer alerts de errores)
 - Modo claro/oscuro
-- Mejorar grid de items (posición, tipografía, etc...)
+- Responsive de tablas admin.php
 - Mejorar header/footer
-- Completar envío de carro a MySQL ----------------------------------------------- COMPLETADO 50%
+- Completar envío de carro a MySQL ----------------------------------------------- COMPLETADO! (normalizar tablas?)
 - Mobile First 100%
 - Formulario de contacto
 - Habilitar formulario de lista de correo
-- Mejora de la lista de items (alineación, etc...)
-- Cambiar comprobacion validacion usuario repetido por email, no nombre.
 - Personalizar página error 404

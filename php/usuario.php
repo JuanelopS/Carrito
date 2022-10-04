@@ -29,7 +29,7 @@
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css'>
    <!-- fontawesome -->
    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' integrity='sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==' crossorigin='anonymous' referrerpolicy='no-referrer' />
-  <link rel='stylesheet' href='../css/admin.css'>
+  <link rel='stylesheet' href='../css/usuario.css'>
 </head>
 <body>
   <header class='mb-5'>
@@ -108,7 +108,7 @@
                       <td>" . date_format($date, 'd/m/Y G:i:s') . "</td>
                       <td>" . number_format($value['total_compra'], 2) . " €</td> 
                       <td>
-                        <button class='btn btn-success btn-sm' type='button' data-bs-toggle='collapse' data-bs-target='#r$key' aria-expanded='false'>
+                        <button class='btn btn-success btn-sm' type='button' data-bs-toggle='collapse' data-bs-target='#r$key'>
                           Detalle compra
                         </button>
                       </td>
