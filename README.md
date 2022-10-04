@@ -10,7 +10,7 @@ Pendiente:
 
 - Mejorar admin.php (falta editar/borrar productos como prioridad)
 
-- mejorar usuario.php (actualmente solo muestra las compras de cada usuario pero sin detalle de cada una)
+- mejorar/añadir más funcionalidades a usuario.php (actualmente solo muestra las compras de cada usuario con el detalle de cada una)
 
 - Formulario de contacto
 
