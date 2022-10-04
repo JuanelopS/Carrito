@@ -50,12 +50,15 @@ window.onload = () => {
   */
 
   const agregarFruta = (nombre, precio, unidad) => {
-    
-    let id1 = self.crypto.randomUUID(); // id para borrar
-    let id2 = self.crypto.randomUUID(); // id para modificar
+    // ids aleatorios formato "36b8f84d-df4e-4d49-b662-bcde71a8764f"
+    // let id1 = self.crypto.randomUUID(); // id para borrar
+    // let id2 = self.crypto.randomUUID(); // id para modificar
+
+    let id1 = new Date().getTime(); // id para borrar
+    let id2 = new Date().getTime() - 1; // id para modificar
 
     let item = {
-      // ids aleatorios formato "36b8f84d-df4e-4d49-b662-bcde71a8764f"
+      
       id1, 
       id2,
       nombre: nombre, 

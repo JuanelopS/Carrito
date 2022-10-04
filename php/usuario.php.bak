@@ -100,11 +100,10 @@
 
                 // para el formateo de fecha/hora 
                 $date = new DateTime($value['fecha_compra']);
-                // ($key+1) -> coloco esta variable así por problemas en ciertos hosting al mostrar la tabla
                 echo
                 "
                     <tr data-bs-toggle='collapse' data-bs-target='#r$key'>
-                      <td scope='row'>".($key+1)."</td>   
+                      <th scope='row'>" . $key + 1 . "</th>
                       <td>" . date_format($date, 'd/m/Y G:i:s') . "</td>
                       <td>" . number_format($value['total_compra'], 2) . " €</td> 
                       <td>
@@ -122,14 +121,14 @@
                       $total = $value_detalle['precio_total_producto'];
                       
                       echo "
-                        <tr class='collapse table-success' id='r$key'>
-                          <th>".($index+1)."</th>
+                        <tr class='collapse table-success' id='r". $key ."'>
+                          <td>". $index + 1 ."</td>
                           <td>$nombre ( $cantidad )</td>
                           <td>".number_format($precio,2)." €</td>
                           <td>".number_format($total,2)." €</td>
                         </tr>";  
                     } 
-
+                
               }
 
             echo "
