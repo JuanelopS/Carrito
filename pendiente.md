@@ -1,6 +1,7 @@
 # Pendiente 🤔
 
 - LocalStorage (previo al envio a la base de datos) (o cookies ?) ---------------- COMPLETADO!
+- Borrado de archivo en borrarProducto.php
 - Contenido carrito a la derecha fixed ( offcanvas body scrolling bootstrap? )
 - Comprobación item repetido en addProducto.php
 - Envio de imagen addProducto.php ------------------------------------------------ COMPLETADO! (hacer alerts de errores)

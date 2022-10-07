@@ -7,6 +7,7 @@
   // consulta para rellenar los placeholder del formulario
 
   $sql_verify_query = "SELECT * FROM usuarios WHERE user_id='$user_id'";
+  
   $sql_verify = $pdoConnection->prepare($sql_verify_query);
   $sql_verify->execute();
   // PDO::FETCH_ASSOC devuelve solamente el valor de la columna

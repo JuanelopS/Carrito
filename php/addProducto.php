@@ -40,7 +40,7 @@
     // SUBIDA DE IMAGEN DE PRODUCTO AL SERVIDOR 
 
     $message = ''; 
-
+      
       if (isset($_FILES['imagen_producto']) && $_FILES['imagen_producto']['error'] === UPLOAD_ERR_OK) {
         
         // detalles del archivo subido
@@ -117,19 +117,19 @@
     </nav>
   </header>
   <?php 
+    
+    // if (isset($_SESSION['message']) && $_SESSION['message'])
+    // {
+    //   printf('<b>%s</b>', $_SESSION['message']);
+    //   printf('extension: ', $fileExtension);
+    //   unset($_SESSION['message']);
+    // }
 
-    if (isset($_SESSION['message']) && $_SESSION['message'])
-    {
-      printf('<b>%s</b>', $_SESSION['message']);
-      printf('extension: ', $fileExtension);
-      unset($_SESSION['message']);
-    }
-
-    if(isset($isRepeated) && $isRepeated == true){
-      echo " <div class='alert alert-danger' role='alert'>
-            El nombre ". $nombre . " ya existe!
-        </div>";
-    }
+    // if(isset($isRepeated) && $isRepeated == true){
+    //   echo " <div class='alert alert-danger' role='alert'>
+    //         El nombre ". $nombre . " ya existe!
+    //     </div>";
+    // }
 
     // si el usuario es el admin, se muestran los datos
     if(isset($_SESSION['user']) && $_SESSION['user'] == 'admin'){

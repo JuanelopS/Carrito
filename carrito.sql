@@ -20,8 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `carrito`
 --
-CREATE DATABASE IF NOT EXISTS `carrito` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `carrito`;
+
 
 -- --------------------------------------------------------
 

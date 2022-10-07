@@ -130,8 +130,8 @@
                   <td>" . number_format($value['precio'],2) . "</td>
                   <td>" . $value['unidad'] . "</td>
                   <td class='text-end'>
-                    <a id='btn-info' class='btn btn-sm disabled'><i class='fa-regular fa-pen-to-square' style='color:green'></i></a>
-                    <a id='btn-info' class='btn btn-sm disabled'><i class='fa-solid fa-delete-left' style='color:red'></i></a>
+                    <a href='editarProducto.php?id=" . $value['id'] . "' id='btn-info' class='btn btn-sm'><i class='fa-regular fa-pen-to-square' style='color:green'></i></a>
+                    <a href='borrarProducto.php?id=" . $value['id'] . "' id='btn-info' class='btn btn-sm'><i class='fa-solid fa-delete-left' style='color:red'></i></a>
                   </td>
                 </tr>";
               }
